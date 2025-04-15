@@ -1,101 +1,91 @@
-# TTconnect
+# TTconnect - B2B Sustainability Platform
 
-TTconnect is a B2B sustainability platform that connects brands and suppliers, helping to optimize supply chains and promote sustainability.
+TTconnect is a B2B sustainability platform that connects brands with suppliers to optimize supply chains and promote sustainable practices.
 
 ## Features
 
-- **Two User Roles**: Brand and Supplier
-- **Authentication**: JWT-based authentication
-- **Supplier Marketplace**: Brands can discover suppliers with filters
-- **Connection Requests**: Brands can send connection requests to suppliers
-- **Workspaces**: Brands and suppliers collaborate within dedicated workspaces
-- **Messaging**: Real-time messaging within workspaces
-- **Document Management**: Upload and share certifications and documents
-- **Supply Chain Optimization**: Optimize supply chains based on emissions, costs, and other factors
+- **Supplier Marketplace**: Discover and connect with sustainable suppliers
+- **My Suppliers**: Manage your connected suppliers
+- **Supply Chain Optimization**: Visualize and optimize your supply chain routes
+- **Messaging**: Communicate directly with suppliers
+- **Certifications**: View and manage sustainability certifications
 
-## Getting Started
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
+- **Backend**: Next.js API routes
+- **Database**: PostgreSQL (via Supabase)
+- **Authentication**: Custom JWT implementation
+- **File Storage**: Supabase Storage
+
+## Setup Guide
 
 ### Prerequisites
 
-- Node.js (v18 or later)
-- npm or pnpm
+- Node.js 16+ 
+- pnpm
 - Supabase account
 
 ### Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/ttconnect.git
+   ```
+   git clone https://github.com/Guhan4396/TTConnect.git
    cd ttconnect
    ```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   # or
+   ```
    pnpm install
    ```
 
-3. Create a `.env.local` file in the root directory with your Supabase credentials:
+3. Create a `.env.local` file with your Supabase credentials:
    ```
-   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-   JWT_SECRET=your-jwt-secret-key
-   ```
-
-4. Create the required tables in your Supabase database:
-   - users
-   - brands
-   - suppliers
-   - connection_requests
-   - workspaces
-   - messages
-   - documents
-   - certifications
-   - checklist_items
-   - supply_chain_routes
-   - optimization_results
-
-5. Run the development server:
-   ```bash
-   npm run dev
-   # or
-   pnpm dev
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+   JWT_SECRET=your_jwt_secret
    ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+4. Create the database schema and seed the database:
+   - Run the SQL from `supabase/schema.sql` in the Supabase SQL editor
+   - Run the SQL from `supabase/seed.sql` in the Supabase SQL editor
 
-## Database Schema
+5. Create a storage bucket named 'documents' in your Supabase project.
 
-The database consists of the following tables:
+### Running the Application
 
-- **Users**: Stores user authentication and role information
-- **Brands**: Stores brand profiles
-- **Suppliers**: Stores supplier profiles with certifications, materials, and value processes
-- **Connection Requests**: Manages connection requests between brands and suppliers
-- **Workspaces**: Represents collaborative spaces between connected brands and suppliers
-- **Messages**: Stores messages exchanged in workspaces
-- **Documents**: Stores document metadata (files stored in Supabase Storage)
-- **Certifications**: Stores supplier certifications
-- **Supply Chain Routes**: Stores supply chain configurations
-- **Optimization Results**: Stores the results of supply chain optimizations
+Start the development server:
+```
+pnpm dev
+```
 
-## Tech Stack
+Visit http://localhost:3000 to see the application.
 
-- **Frontend**: Next.js, React, Tailwind CSS
-- **Backend**: Next.js API Routes
-- **Database**: Supabase (PostgreSQL)
-- **Storage**: Supabase Storage
-- **Authentication**: JWT, Supabase Auth
+### Login Information
+
+- **Brand Login**: 
+  - Email: tokio@example.com
+  - Password: hashed_password_here
+
+- **Supplier Login**:
+  - Email: ecofabrics@example.com
+  - Password: hashed_password_here
+
+## Importing Data
+
+To import supplier data from Excel:
+```
+node import-excel.js
+```
 
 ## Deployment
 
 The application can be deployed to Vercel:
-
-1. Connect your repository to Vercel
-2. Add the environment variables
-3. Deploy
+```
+vercel
+```
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+MIT
